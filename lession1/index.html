@@ -17,7 +17,6 @@
 <script>
 
     (function () {
-
         var scene = new THREE.Scene();
 
         var camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,1000);
@@ -25,7 +24,8 @@
         var renderer = new THREE.WebGLRenderer();
         renderer.setClearColor(0xEEEEEE);
         renderer.setSize(window.innerWidth,window.innerHeight);
-        renderer.shadowMapEnabled=true;
+        renderer.shadowMap.enabled=true;
+
 //        var axes = new THREE.AxisHelper(20);
 //        scene.add(axes);
 
@@ -61,6 +61,7 @@
         var spotLight = new THREE.SpotLight(0xffffff);
         spotLight.position.set(-40,60,-10);
         spotLight.castShadow=true;
+        spotLight.shadow.mapSize.width = spotLight.shadow.mapSize.height = 1024*4;
 
         scene.add(spotLight);
 
